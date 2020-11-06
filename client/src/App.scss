@@ -135,11 +135,16 @@ form {
 header {
     background-color: rgb(24, 21, 14);
     position: sticky;
+    position: -webkit-sticky;
+    z-index: 2;
     top: 0;
     .section-nav {
         height: 2em;
         .section-nav-icon-provider {
             position: fixed;
+            top:0;
+            left: 0;
+            z-index: 3;
             height: 2em;
             width: 2em;
             color: lightgreen;

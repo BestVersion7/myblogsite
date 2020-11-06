@@ -30,7 +30,7 @@ export const Footer = () => {
                 />
             </a>
             <br />
-            2020 - <b>www.hunterkenfan.com</b>
+            2020 - <b>https://athomeblogs.herokuapp.com/</b>
         </footer>
     );
 };

@@ -11,25 +11,30 @@ export const Navigation = () => {
     const [mobileIcon, setMobileIcon] = useState(true);
     const [showNav, setShowNav] = useState(true);
 
-    const handleClick = () => {
+    const handleClickIconMobile = () => {
         setMobileIcon(!mobileIcon);
         setShowNav(!showNav);
     };
-    const handleCollapse = () => {
+    const handleClickLinkMobile = () => {
         window.scrollTo(0, 0);
         setMobileIcon(!mobileIcon);
         setShowNav(!showNav);
     };
-    const handleClickNav = () => {
+    const handleClickLinkDesktop = () => {
         window.scrollTo(0, 0);
     };
 
-    const handleSignout = () => {
+    const handleSignoutMobile = () => {
         cookie.remove("jan");
         window.scrollTo(0, 0);
-        setSignedIn(false)
+        setSignedIn(false);
         setMobileIcon(!mobileIcon);
         setShowNav(!showNav);
+    };
+    const handleSignoutDesktop = () => {
+        cookie.remove("jan");
+        window.scrollTo(0, 0);
+        setSignedIn(false);
     };
 
     return (
@@ -39,20 +44,20 @@ export const Navigation = () => {
                     <IconContext.Provider
                         value={{ className: "section-nav-icon-provider" }}
                     >
-                        <GiHamburgerMenu onClick={handleClick} />
+                        <GiHamburgerMenu onClick={handleClickIconMobile} />
                     </IconContext.Provider>
                 ) : (
                     <IconContext.Provider
                         value={{ className: "section-nav-icon-provider" }}
                     >
-                        <AiOutlineClose onClick={handleClick} />
+                        <AiOutlineClose onClick={handleClickIconMobile} />
                     </IconContext.Provider>
                 )}
                 {showNav ? (
                     <nav className="section-navlink-container">
                         <div className="section-navlink-container-blank">
                             <NavLink
-                                onClick={handleClickNav}
+                                onClick={handleClickLinkDesktop}
                                 className="section-nav-links"
                                 to="/"
                                 exact={true}
@@ -63,13 +68,13 @@ export const Navigation = () => {
                                 <NavLink
                                     className="section-nav-links"
                                     to="/"
-                                    onClick={handleSignout}
+                                    onClick={handleSignoutDesktop}
                                 >
                                     Sign Out
                                 </NavLink>
                             ) : (
                                 <NavLink
-                                    onClick={handleClickNav}
+                                    onClick={handleClickLinkDesktop}
                                     className="section-nav-links"
                                     to="/signin"
                                 >
@@ -77,14 +82,14 @@ export const Navigation = () => {
                                 </NavLink>
                             )}
                             <NavLink
-                                onClick={handleClick}
+                                onClick={handleClickLinkDesktop}
                                 className="section-nav-links"
                                 to="/donate"
                             >
                                 Donate
                             </NavLink>
                             <NavLink
-                                onClick={handleClick}
+                                onClick={handleClickLinkDesktop}
                                 className="section-nav-links"
                                 to="/master"
                             >
@@ -96,7 +101,7 @@ export const Navigation = () => {
                     <nav className="section-navlink-container-mobile">
                         <div className="section-navlink-container-blank">
                             <NavLink
-                                onClick={handleCollapse}
+                                onClick={handleClickLinkMobile}
                                 className="section-nav-links"
                                 to="/"
                                 exact={true}
@@ -105,7 +110,7 @@ export const Navigation = () => {
                             </NavLink>
                             {signedIn ? (
                                 <NavLink
-                                    onClick={handleSignout}
+                                    onClick={handleSignoutMobile}
                                     className="section-nav-links"
                                     to="/"
                                 >
@@ -113,7 +118,7 @@ export const Navigation = () => {
                                 </NavLink>
                             ) : (
                                 <NavLink
-                                    onClick={handleCollapse}
+                                    onClick={handleClickLinkMobile}
                                     className="section-nav-links"
                                     to="/signin"
                                 >
@@ -121,14 +126,14 @@ export const Navigation = () => {
                                 </NavLink>
                             )}
                             <NavLink
-                                onClick={handleCollapse}
+                                onClick={handleClickLinkMobile}
                                 className="section-nav-links"
                                 to="/donate"
                             >
                                 Donate
                             </NavLink>
                             <NavLink
-                                onClick={handleCollapse}
+                                onClick={handleClickLinkMobile}
                                 className="section-nav-links"
                                 to="/master"
                             >
