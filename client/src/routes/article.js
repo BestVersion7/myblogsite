@@ -14,7 +14,7 @@ export const Article = ({ match }) => {
 
     useEffect(() => {
         let url = "http://localhost:4000";
-        if(process.env.NODE_ENV==='development') {
+        if(process.env.NODE_ENV==='production') {
             url=''
         }
         const socket = io.connect(`${url}/user`);
