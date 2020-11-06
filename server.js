@@ -14,6 +14,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
 // const pool = require("./database");
+const path = require('path')
 
 app.use(cors());
 app.use(express.json());
