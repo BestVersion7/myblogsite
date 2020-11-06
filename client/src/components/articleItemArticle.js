@@ -1,7 +1,7 @@
 import React from "react";
 import convertDate from "../utilities/convertDate";
 import DangerousHTML from "../utilities/dangerousHTML";
-import {string} from 'prop-types'
+import { string } from "prop-types";
 
 export const ArticleItemArticle = ({
     article_date,
@@ -23,7 +23,7 @@ export const ArticleItemArticle = ({
                     title={article_image_alt}
                     alt={article_image_alt}
                 />
-                <figcaption>hello</figcaption>
+                <figcaption>{article_image_alt}</figcaption>
             </figure>
             <DangerousHTML post={article_post} />
         </article>
@@ -36,4 +36,4 @@ ArticleItemArticle.propTypes = {
     article_title: string,
     article_post: string,
     article_image_alt: string,
-}
+};
