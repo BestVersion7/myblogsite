@@ -64,7 +64,7 @@ export const ArticleItemMaster = ({
                 onChange={(e) => setArticlePost(e.target.value)}
                 cols="50"
                 rows="10"
-                value={article_post}
+                value={articlePost}
             />
             <br />
             <button value={article_id} onClick={handleUpdate}>
