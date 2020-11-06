@@ -11,19 +11,19 @@ export const Home = () => {
 
     return (
         <div className="route-home">
-            <h2>Home Vibes</h2>
+            <h2>At Home Blogs</h2>
             <p>
-                Welcome to my blog where I write about my personal experience
-                with topics such as learning new skillz, passion projects and
-                books.
+                Welcome to my blog where I write opinionated articles on
+                philosophy, passion projects and people.
             </p>
             <p>
-                A little bit about me is I love to learn and read self-help
-                books on web development, dating and business. My goal is to
-                share my experiences with you.
+                <b>About the Author: Hunter Fan</b> is a high achiever with a
+                background in finance. In his free time, he loves to learn and
+                read self-help books on topics in technology, business and
+                dating. My goal is to share my experiences with you.
             </p>
-            <p>Disclaimer: This site uses cookies for Google Analytics.</p>
-            <h2>Blog Articles</h2>
+            <p>Privacy Policy: This site uses cookies for Google Analytics.</p>
+            <h3>Blog Articles</h3>
             <main className="container-article">
                 {article.map(
                     ({
