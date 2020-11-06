@@ -1,0 +1,212 @@
+@mixin mQ($width) {
+    @media (min-width: $width) {
+        @content;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    #root {
+        background-color: beige;
+        margin: auto;
+        max-width: 100em;
+        .container-app {
+        }
+    }
+}
+
+.route-home,
+.route-donation,
+.route-signin,
+.route-signup,
+.route-master,
+.route-masterView {
+    margin: 0 1em;
+    @include mQ(30em) {
+        margin: 0 2em;
+    }
+    @include mQ(50em) {
+        margin: 0 4em;
+    }
+}
+
+.route-signin {
+    height: 25em;
+}
+
+footer {
+    background: darkslategray;
+    text-align: center;
+    color: darken($color: white, $amount: 10);
+    a {
+        padding: 0 0.3em;
+    }
+}
+
+// for the home page for styling srticles
+.container-article {
+    display: grid;
+    grid-gap: 0.5em;
+    @include mQ(30em) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include mQ(50em) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .container-article-home {
+        border: 0.1px solid gray;
+        background-color: lighten(lightgreen, 15);
+        box-shadow: 2px 3px black;
+        .container-article-home-link {
+            display: grid;
+            grid-gap: 1em;
+            grid-template-columns: 6em auto;
+            height: 4em;
+            text-decoration: none;
+            padding: 0.3em 0.5em;
+            &:hover {
+                background-color: lightblue;
+            }
+            img {
+                height: 4em;
+                width: 6em;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+// for the article pages based on id
+.route-article {
+    margin: 0 2em;
+    display: grid;
+    @include mQ(50em) {
+        margin-left: 2em;
+        margin-right: 0;
+        grid-template-columns: 3fr 1fr;
+    }
+    .container-article-article {
+        h3 {
+            text-align: center;
+        }
+        .container-article-article-author {
+            text-align: center;
+        }
+        figure {
+            display: block;
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+    .section-article-col2 {
+        display: none;
+        @include mQ(50em) {
+            // position: static;
+            display: block;
+            background-color: lightcyan;
+        }
+    }
+}
+
+//sign in and signup form
+form {
+    display: grid;
+    @include mQ(30em) {
+        grid-template-columns: minmax(auto, 9em) minmax(auto, 20em);
+    }
+}
+
+.container-donation {
+    height: 25em;
+}
+
+.container-master-article {
+    border: 1px solid blue;
+    border-radius: 4;
+    max-width: 50em;
+    height: auto;
+}
+
+// navigation
+header {
+    background-color: rgb(24, 21, 14);
+    position: sticky;
+    top: 0;
+    .section-nav {
+        height: 2em;
+        .section-nav-icon-provider {
+            position: fixed;
+            height: 2em;
+            width: 2em;
+            color: lightgreen;
+            @include mQ(30em) {
+                display: none;
+            }
+        }
+
+        // desktop view
+        .section-navlink-container {
+            display: none;
+            @include mQ(30em) {
+                display: block;
+            }
+        }
+
+        // mobile view
+        .section-navlink-container-mobile {
+            height: 100vh;
+            margin-top: 0;
+            background-color: rgb(53, 51, 44);
+            width: 20em;
+            @include mQ(30em) {
+                background-color: rgb(24, 21, 14);
+                height: 2em;
+            }
+        }
+        .section-navlink-container-blank {
+            padding-top: 2em;
+            @include mQ(30em) {
+                padding-top: 0;
+            }
+            .section-nav-links {
+                display: block;
+                // padding: 2em;
+                color: lightgreen;
+                border: solid 0.3px lightgreen;
+                padding: 0.4em 1em 0.4em 1em;
+                &:link {
+                    text-decoration: none;
+                }
+                &:hover {
+                    color: rgb(79, 209, 137);
+                    background-color: lighten(rgb(53, 51, 44), 13);
+                }
+                @include mQ(30em) {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+.container-review-form {
+    textarea {
+        width: 23em;
+        height: 5em;
+        @include mQ(50em){
+            width: 42em;
+        }
+    }
+    button {
+        width: 5em;
+    }
+}
+
+.img-master {
+    width: 100%;
+    max-width: 30em;
+}
