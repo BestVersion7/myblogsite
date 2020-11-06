@@ -29,6 +29,7 @@ export const ArticleItemMaster = ({
         });
     };
 
+    // this needs to be rewritten to update socket changes on update
     return (
         <article className="container-master-article">
             EDIT HERE <br /> {formatDate(article_date)} <br />
@@ -42,19 +43,19 @@ export const ArticleItemMaster = ({
             <br />
             Article Title <br />
             <input
-                value={article_title}
+                value={articleTitle}
                 onChange={(e) => setArticleTitle(e.target.value)}
             />
             <br />
             Article Image <br />
             <input
-                value={article_image}
+                value={articleImage}
                 onChange={(e) => setArticleImage(e.target.value)}
             />
             <br />
             Article Image Alt <br />
             <input
-                value={article_image_alt}
+                value={articleImageAlt}
                 onChange={(e) => setArticleImageAlt(e.target.value)}
             />
             <br />
@@ -64,9 +65,7 @@ export const ArticleItemMaster = ({
                 cols="50"
                 rows="10"
                 value={article_post}
-            >
-                {article_post}
-            </textarea>
+            />
             <br />
             <button value={article_id} onClick={handleUpdate}>
                 UPDATE CHANGES

@@ -13,7 +13,10 @@ export const Article = ({ match }) => {
     const [userSignedIn, setUserSignedIn] = useState(true);
 
     useEffect(() => {
-        const url = "http://localhost:4000";
+        let url = "http://localhost:4000";
+        if(process.env.NODE_ENV==='development') {
+            url=''
+        }
         const socket = io.connect(`${url}/user`);
         setCurrentSocket(socket);
 
