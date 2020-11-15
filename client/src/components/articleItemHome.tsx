@@ -1,8 +1,14 @@
-import React from "react";
-import { string } from "prop-types";
+import React, { FC } from "react";
 import convertArticleTitle from "../utilities/convertArticleTitle";
 
-export const ArticleItemHome = ({
+interface Props {
+    article_id: number;
+    article_image: string;
+    article_title: string;
+    article_image_alt: string;
+}
+
+export const ArticleItemHome: FC<Props> = ({
     article_id,
     article_image,
     article_title,
@@ -26,9 +32,4 @@ export const ArticleItemHome = ({
             </a>
         </article>
     );
-};
-
-ArticleItemHome.propTypes = {
-    article_image: string.isRequired,
-    article_title: string.isRequired,
 };

@@ -7,7 +7,7 @@ export const Master = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [redirect, setRedirect] = useState(false);
-    const handleSignIn = (e) => {
+    const handleSignIn = (e: any) => {
         e.preventDefault();
         signInMaster({
             master_account_email: email,

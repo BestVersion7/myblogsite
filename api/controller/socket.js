@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const pool = require("../../database");
+const socketLimiter = require("../middleware/socketLimiter");
 
 exports.fetchReviews = (endpoint, socket) => {
     socket.on("fetchReview", async (room) => {
@@ -24,6 +25,9 @@ exports.fetchReviews = (endpoint, socket) => {
 exports.postReview = (endpoint, socket) =>
     socket.on("postReview", async (data) => {
         try {
+            // limit number of posts per user
+            await socketLimiter.consume(socket.handshake.address);
+
             //verify the cookie and extract the account_id
             const { account_id } = jwt.verify(
                 data.token,

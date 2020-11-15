@@ -1,20 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signInUser } from "../utilities/apiCall";
-import { AuthContext } from "../utilities/authContext";
-
 
 export const SignInForm = () => {
-    const  {setSignedIn} = useContext(AuthContext)
     const [account_email, setAccount_email] = useState("");
     const [account_password, setAccount_password] = useState("");
     const [redirect, setRedirect] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         // {account_email: account_email} can decompose to just {account_email}
         signInUser({ account_email, account_password, setRedirect });
-        setSignedIn(true)
     };
 
     if (redirect) {

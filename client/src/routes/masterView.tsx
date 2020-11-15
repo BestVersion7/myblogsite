@@ -5,7 +5,7 @@ import { ArticleItemMaster } from "../components/articleItemMaster";
 import cookie from "js-cookie";
 
 export const MasterView = () => {
-    const [masterWebSocket, setMasterWebSocket] = useState(null);
+    const [masterWebSocket, setMasterWebSocket] = useState<any>(null);
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export const MasterView = () => {
         socket.emit("masterFetchArticle");
 
         // fetch success
-        socket.on("articles", (data) => setArticles(data));
+        socket.on("articles", (data: any) => setArticles(data));
         socket.on("masterUpdateSuccess", () =>
             socket.emit("masterFetchArticle")
         );

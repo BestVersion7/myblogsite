@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, FC, useEffect } from "react";
 import { ArticleItemArticle } from "../components/articleItemArticle";
 import io from "socket.io-client";
 import { ReviewItem } from "../components/reviewItem";
 import { ReviewEntry } from "../components/reviewEntry";
 import { fetchArticleById } from "../utilities/apiCall";
 
-export const Article = ({ match }) => {
-    const [articleData, setArticleData] = useState({});
+export const Article: FC<{}> = ({ match }: any) => {
+    const [articleData, setArticleData] = useState<any>({});
     const [reviewData, setReviewData] = useState([]);
-    const [currentSocket, setCurrentSocket] = useState(null);
+    const [currentSocket, setCurrentSocket] = useState<any>(null);
     // this is to make sure review can be entered
     const [userSignedIn, setUserSignedIn] = useState(true);
 
     useEffect(() => {
         let url = "http://localhost:4000";
-        if(process.env.NODE_ENV==='production') {
-            url=''
+        if (process.env.NODE_ENV === "production") {
+            url = "";
         }
         const socket = io.connect(`${url}/user`);
+
         setCurrentSocket(socket);
 
         // REST
@@ -27,7 +28,7 @@ export const Article = ({ match }) => {
         // fetch reviews
         socket.emit("fetchReview", match.params.articleId);
         // console.log("fetching reviews client");
-        socket.on("reviews", (data) => {
+        socket.on("reviews", (data: any) => {
             setReviewData(data);
         });
 
@@ -53,6 +54,7 @@ export const Article = ({ match }) => {
         article_image,
         article_post,
         article_title,
+        article_image_alt
     } = articleData;
 
     return (
@@ -65,6 +67,7 @@ export const Article = ({ match }) => {
                     article_image={article_image}
                     article_title={article_title}
                     article_post={article_post}
+                    article_image_alt={article_image_alt}
                 />
 
                 {/* make sure user has jwt */}

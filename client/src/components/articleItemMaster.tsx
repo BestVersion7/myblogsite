@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { masterUpdateArticle, masterDeleteArticle } from "../utilities/apiCall";
 import formatDate from "../utilities/convertDate";
 import convertArticleTitle from "../utilities/convertArticleTitle";
-import { string, object, number } from "prop-types";
 
-export const ArticleItemMaster = ({
+interface Props {
+    socket: string;
+    article_title: string;
+    article_id: number;
+    article_date: string;
+    article_image: string;
+    article_image_alt: string;
+    article_post: string;
+}
+
+export const ArticleItemMaster: FC<Props> = ({
     socket,
     article_title,
     article_id,
@@ -18,7 +27,7 @@ export const ArticleItemMaster = ({
     const [articleImage, setArticleImage] = useState(article_image);
     const [articleImageAlt, setArticleImageAlt] = useState(article_image_alt);
 
-    const handleUpdate = (e) => {
+    const handleUpdate = (e: any) => {
         masterUpdateArticle({
             socket,
             article_id: e.target.value,
@@ -62,8 +71,8 @@ export const ArticleItemMaster = ({
             Article Post <br />
             <textarea
                 onChange={(e) => setArticlePost(e.target.value)}
-                cols="50"
-                rows="10"
+                cols={50}
+                rows={10}
                 value={articlePost}
             />
             <br />
@@ -73,19 +82,10 @@ export const ArticleItemMaster = ({
             <br />
             <button
                 value={article_id}
-                onClick={(e) => masterDeleteArticle(socket, e.target.value)}
+                onClick={(e: any) => masterDeleteArticle(socket, e.target.value)}
             >
                 DELETE ARTICLE id {article_id}
             </button>
         </article>
     );
-};
-ArticleItemMaster.propTypes = {
-    socket: object,
-    article_title: string.isRequired,
-    article_id: number.isRequired,
-    article_date: string.isRequired,
-    article_image: string.isRequired,
-    article_image_alt: string.isRequired,
-    article_post: string.isRequired,
 };

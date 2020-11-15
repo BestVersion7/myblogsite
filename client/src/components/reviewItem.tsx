@@ -1,8 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import convertDate from "../utilities/convertDate";
-import { string } from "prop-types";
 
-export const ReviewItem = ({
+interface Props {
+    first_name: string;
+    last_name: string;
+    review_date: string;
+    review_message: string;
+}
+
+export const ReviewItem: FC<Props> = ({
     first_name,
     last_name,
     review_date,
@@ -19,10 +25,4 @@ export const ReviewItem = ({
             <p>{review_message}</p>
         </div>
     );
-};
-
-ReviewItem.propTypes = {
-    first_name: string.isRequired,
-    last_name: string.isRequired,
-    review_message: string.isRequired
 };

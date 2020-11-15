@@ -9,7 +9,7 @@ export const SignUpForm = () => {
     const [account_password, setAccount_password] = useState("");
     const [redirect, setRedirect] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         signUpUser({
             first_name,

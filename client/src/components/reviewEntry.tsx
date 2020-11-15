@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { postReview } from "../utilities/apiCall";
-import {string} from 'prop-types'
 
-export const ReviewEntry = ({ webSocket, article_id }) => {
+interface Props {
+    webSocket: string;
+    article_id: number;
+}
+
+export const ReviewEntry: FC<Props> = ({ webSocket, article_id }) => {
     const [review_message, setReview_Message] = useState("");
 
-    const handleSubmitComment = (e) => {
+    const handleSubmitComment = (e: any) => {
         e.preventDefault();
         postReview({
             webSocket,
@@ -32,7 +36,3 @@ export const ReviewEntry = ({ webSocket, article_id }) => {
         </div>
     );
 };
-
-ReviewEntry.propTypes = {
-    article_id: string.isRequired
-}

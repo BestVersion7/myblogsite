@@ -15,6 +15,7 @@ const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
 // const pool = require("./database");
 const path = require('path')
+const stripeRouter = require('./api/routes/stripe')
 
 app.use(cors());
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use("/api/account", accountRouter);
 app.use("/api/review", reviewRouter);
 app.use("/api/article", articleRouter);
 app.use("/api/masteraccount", masterAccountRouter);
+app.use('/stripe', stripeRouter)
 
 // server static files when in production
 if (process.env.NODE_ENV === "production") {

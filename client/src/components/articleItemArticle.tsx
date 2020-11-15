@@ -1,9 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import convertDate from "../utilities/convertDate";
 import DangerousHTML from "../utilities/dangerousHTML";
-import { string } from "prop-types";
 
-export const ArticleItemArticle = ({
+interface Props {
+    article_id: number;
+    article_date: string;
+    article_image: string;
+    article_title: string;
+    article_post: string;
+    article_image_alt: string;
+}
+
+export const ArticleItemArticle: FC<Props> = ({
+    article_id,
     article_date,
     article_image,
     article_title,
@@ -28,12 +37,4 @@ export const ArticleItemArticle = ({
             <DangerousHTML post={article_post} />
         </article>
     );
-};
-
-ArticleItemArticle.propTypes = {
-    article_date: string,
-    article_image: string,
-    article_title: string,
-    article_post: string,
-    article_image_alt: string,
 };
