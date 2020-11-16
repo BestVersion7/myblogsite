@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { Home } from "./routes/home";
 import { SignIn } from "./routes/signin";
 import { ErrorPage } from "./routes/errorPage";
-// import { Donation } from "./routes/donation";
+import { Donation } from "./routes/donation";
 import { Article } from "./routes/article";
 import { SignUp } from "./routes/signup";
 import { Master } from "./routes/master";
@@ -44,7 +44,7 @@ const App = () => {
                             path="/article/:articleId/:articleTitle"
                             component={Article}
                         />
-                        {/* <Route path="/donate" component={Donation} /> */}
+                        <Route path="/donate" component={Donation} />
                         <Route path="/master" component={Master} />
                         <ProtectedRoute
                             path="/masterview"

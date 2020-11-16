@@ -1,16 +1,19 @@
 import axios from "axios";
 import cookie from "js-cookie";
+
 // account
 export const signInUser = async ({
     account_email,
     account_password,
     setRedirect,
+    setSignedIn
 }) => {
     try {
         await axios.post("/api/account/signin", {
             account_email,
             account_password,
         });
+        setSignedIn(true);
         setRedirect(true);
     } catch (e) {
         alert("incorrect password");

@@ -5,3 +5,4 @@ module.exports = accountLimiter = rateLimit({
     max: 2,
     message: "2 maximum accounts per 15 minutes per IP address"
 })
+

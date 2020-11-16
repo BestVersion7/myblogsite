@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ArticleItemHome } from "../components/articleItemHome";
-import { DonationForm } from "../components/donationForm";
 import { fetchArticles } from "../utilities/apiCall";
 
 export const Home = () => {
@@ -42,7 +41,7 @@ export const Home = () => {
                     )
                 )}
             </main>
-            <DonationForm />
+
         </div>
     );
 };
