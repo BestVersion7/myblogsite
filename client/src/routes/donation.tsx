@@ -10,9 +10,10 @@ const stripePromise = loadStripe(
 export const Donation = () => {
     return (
         <div className="route-donation">
+            <h3>Support My Website:</h3>
             <Elements stripe={stripePromise}>
                 <DonationForm />
-            </Elements>
+            </Elements> <br/>
         </div>
     );
 };

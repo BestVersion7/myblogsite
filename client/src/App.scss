@@ -24,6 +24,7 @@ body {
 .route-master,
 .route-masterView {
     margin: 0 1em;
+    min-height: 90vh;
     @include mQ(30em) {
         margin: 0 2em;
     }
@@ -32,6 +33,35 @@ body {
     }
 }
 
+// donation
+.route-donation {
+    .container-donation-form {
+        width: 20em;
+    }
+}
+.modal-donation {
+    position: absolute;
+    margin: 30vh auto auto auto;
+    max-width: 15em;
+    height: 2.2em;
+    color: lightgreen;
+    font-weight: bold;
+    background: black;
+}
+.result-message {
+    line-height: 22px;
+    font-size: 16px;
+}
+.result-message a {
+    color: rgb(89, 111, 214);
+    font-weight: 600;
+    text-decoration: none;
+}
+.hidden {
+    display: none;
+}
+
+// signin
 .route-signin {
     height: 25em;
 }
@@ -114,16 +144,13 @@ footer {
 }
 
 //sign in and signup form
-form {
+.signInForm,
+.signUpForm {
     display: grid;
     @include mQ(30em) {
         grid-template-columns: minmax(auto, 9em) minmax(auto, 20em);
     }
 }
-
-// .container-donation-form {
-//     display: grid;
-// }
 
 .container-master-article {
     border: 1px solid blue;

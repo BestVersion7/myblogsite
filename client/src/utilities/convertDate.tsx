@@ -1,4 +1,4 @@
-const formatDate = (date) => {
+const formatDate = (date: string) => {
     const longMonths = [
         "January",
         "February",

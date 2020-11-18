@@ -9,6 +9,7 @@ exports.signUp = async (req, res) => {
             "INSERT INTO account (first_name, last_name, account_email, account_password) VALUES ($1, $2, $3, $4) RETURNING *",
             [first_name, last_name, account_email, account_password]
         );
+        // console.log(newAccount)
         res.json(newAccount.rows[0]);
     } catch (err) {
         res.status(500).json("account id already exists");

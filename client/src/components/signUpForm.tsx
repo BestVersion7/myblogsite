@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { signUpUser } from "../utilities/apiCall";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export const SignUpForm = () => {
-    const [first_name, setFirst_name] = useState("");
-    const [last_name, setLast_name] = useState("");
-    const [account_email, setAccount_email] = useState("");
-    const [account_password, setAccount_password] = useState("");
+    const [first_name, setFirst_name] = useState("te");
+    const [last_name, setLast_name] = useState("de");
+    const [account_email, setAccount_email] = useState("ss");
+    const [account_password, setAccount_password] = useState("aa");
     const [redirect, setRedirect] = useState(false);
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.ChangeEvent<any>) => {
+        console.log("s");
         e.preventDefault();
         signUpUser({
             first_name,
@@ -25,32 +28,42 @@ export const SignUpForm = () => {
     }
 
     return (
-        <form>
-            <label>First Name</label>
-            <input
+        <form className="signUpForm">
+            <TextField
                 value={first_name}
-                onChange={(e) => setFirst_name(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setFirst_name(e.target.value)
+                }
+                label="First Name"
             />
-            <label>Last Name</label>
-            <input
+            <br />
+            <TextField
                 value={last_name}
-                onChange={(e) => setLast_name(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setLast_name(e.target.value)
+                }
+                label="Last Name"
             />
-            <label>Email address</label>
-            <input
+            <br />
+            <TextField
                 value={account_email}
-                onChange={(e) => setAccount_email(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setAccount_email(e.target.value)
+                }
+                label="Email"
             />
-            <label>Password</label>
-            <input
+            <br />
+            <TextField
                 value={account_password}
-                onChange={(e) => setAccount_password(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setAccount_password(e.target.value)
+                }
+                label="Password"
             />
-            <button onClick={handleSubmit}>Sign Up</button>
+            <br /> <br /> <br />
+            <Button variant="contained" onClick={handleSubmit}>
+                Sign Up
+            </Button>
         </form>
     );
 };

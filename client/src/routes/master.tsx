@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { signInMaster } from "../utilities/apiCall";
 import { Redirect } from "react-router-dom";
 import imgmaster from "../assets/masterview.png";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export const Master = () => {
     const [email, setEmail] = useState("");
@@ -25,20 +27,26 @@ export const Master = () => {
                 create, update and delete my articles! <br /> PS: It won't be
                 easy unless... you're a professional
             </p>
-            <form onSubmit={handleSignIn}>
-                <label>email</label>
-                <input
+            <form>
+                <TextField
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    type="text"
+                    onChange={(e: React.ChangeEvent<any>) =>
+                        setEmail(e.target.value)
+                    }
+                    label="Email"
                 />
-                <label>password</label>
-                <input
+                <br />
+                <TextField
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="text"
+                    onChange={(e: React.ChangeEvent<any>) =>
+                        setPassword(e.target.value)
+                    }
+                    label="Password"
                 />
-                <button>Sign In</button>
+                <br /> <br />
+                <Button variant="contained" color="primary" onClick={handleSignIn}>
+                    Sign In
+                </Button>
             </form>
             <hr />
             <figure>

@@ -14,17 +14,19 @@ import ProtectedRoute from "./utilities/protectedRoute";
 import { AuthContext } from "./utilities/authContext";
 import { DonationSuccess } from "./routes/donationSuccess";
 import axios from "axios";
+import cookie from "js-cookie";
 
 const App = () => {
     const [signedIn, setSignedIn] = useState(false);
 
     // this is to change the navigation to remove signin to signout on refresh
     const validateToken = async () => {
+        if (!cookie.get("jan")) return;
         try {
             await axios.get("/api/account");
             setSignedIn(true);
         } catch (err) {
-            console.clear();
+            alert('internal system error')
         }
     };
 
@@ -60,9 +62,10 @@ const App = () => {
                         <Route path="/master">
                             <Master />
                         </Route>
-                        <ProtectedRoute path="/masterview">
-                            <MasterView />
-                        </ProtectedRoute>
+                        <ProtectedRoute
+                            path="/masterview"
+                            component={MasterView}
+                        />
                         <Route path="/">
                             <ErrorPage />
                         </Route>

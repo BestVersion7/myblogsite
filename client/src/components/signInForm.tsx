@@ -1,18 +1,25 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { signInUser } from "../utilities/apiCall";
-import {AuthContext} from '../utilities/authContext'
+import { AuthContext } from "../utilities/authContext";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export const SignInForm = () => {
-    const [account_email, setAccount_email] = useState("");
-    const [account_password, setAccount_password] = useState("");
+    const [account_email, setAccount_email] = useState("1");
+    const [account_password, setAccount_password] = useState("1");
     const [redirect, setRedirect] = useState(false);
-    const {setSignedIn} = useContext(AuthContext)
+    const { setSignedIn } = useContext(AuthContext);
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         // {account_email: account_email} can decompose to just {account_email}
-        signInUser({ account_email, account_password, setRedirect, setSignedIn });
+        signInUser({
+            account_email,
+            account_password,
+            setRedirect,
+            setSignedIn,
+        });
     };
 
     if (redirect) {
@@ -20,23 +27,23 @@ export const SignInForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <p>
-                <b>Sign In Here:</b>
-            </p>
-            <label>Username</label>
-            <input
+        <form className="signInForm">
+            <TextField
                 value={account_email}
-                onChange={(e) => setAccount_email(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setAccount_email(e.target.value)
+                }
             />
-            <label>Password</label>
-            <input
+            <br />
+            <TextField
                 value={account_password}
-                onChange={(e) => setAccount_password(e.target.value)}
-                type="text"
+                onChange={(e: React.ChangeEvent<any>) =>
+                    setAccount_password(e.target.value)
+                }
+                label="Password"
             />
-            <button>Sign In</button>
+            <br /> <br /> <br />
+            <Button variant="contained" onClick={handleSubmit}>Sign In</Button>
         </form>
     );
 };

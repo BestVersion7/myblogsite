@@ -68,7 +68,7 @@ nsp2.use((socket, next) => {
         jwt.verify(token, process.env.JWTSECRET);
         next();
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         return;
     }
 }).on("connection", (socket) => {
