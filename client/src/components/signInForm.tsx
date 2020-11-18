@@ -29,14 +29,13 @@ export const SignInForm = () => {
     return (
         <form className="signInForm">
             <TextField
-                value={account_email}
+            label="Email"
                 onChange={(e: React.ChangeEvent<any>) =>
                     setAccount_email(e.target.value)
                 }
             />
             <br />
             <TextField
-                value={account_password}
                 onChange={(e: React.ChangeEvent<any>) =>
                     setAccount_password(e.target.value)
                 }

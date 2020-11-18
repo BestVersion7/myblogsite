@@ -29,7 +29,6 @@ export const SignUpForm = () => {
     return (
         <form className="signUpForm">
             <TextField
-                value={first_name}
                 onChange={(e: React.ChangeEvent<any>) =>
                     setFirst_name(e.target.value)
                 }
@@ -37,7 +36,6 @@ export const SignUpForm = () => {
             />
             <br />
             <TextField
-                value={last_name}
                 onChange={(e: React.ChangeEvent<any>) =>
                     setLast_name(e.target.value)
                 }
@@ -45,7 +43,6 @@ export const SignUpForm = () => {
             />
             <br />
             <TextField
-                value={account_email}
                 onChange={(e: React.ChangeEvent<any>) =>
                     setAccount_email(e.target.value)
                 }
@@ -53,7 +50,6 @@ export const SignUpForm = () => {
             />
             <br />
             <TextField
-                value={account_password}
                 onChange={(e: React.ChangeEvent<any>) =>
                     setAccount_password(e.target.value)
                 }

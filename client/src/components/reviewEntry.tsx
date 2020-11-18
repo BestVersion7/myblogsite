@@ -9,7 +9,7 @@ interface Props {
 export const ReviewEntry: FC<Props> = ({ webSocket, article_id }) => {
     const [review_message, setReview_Message] = useState("");
 
-    const handleSubmitComment = (e: any) => {
+    const handleSubmitComment = (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         postReview({
             webSocket,
@@ -28,7 +28,6 @@ export const ReviewEntry: FC<Props> = ({ webSocket, article_id }) => {
                 <textarea
                     placeholder="Post a comment"
                     onChange={(e) => setReview_Message(e.target.value)}
-                    value={review_message}
                 ></textarea>
                 <button>Submit</button>
             </form>

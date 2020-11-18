@@ -34,11 +34,10 @@ body {
 }
 
 // donation
-.route-donation {
-    .container-donation-form {
-        width: 20em;
-    }
+.container-donation-form {
+    max-width: 25em;
 }
+
 .modal-donation {
     position: absolute;
     margin: 30vh auto auto auto;

@@ -20,6 +20,7 @@ exports.createPaymentIntent = async (req, res) => {
         // sends client secret to front end to complete trx
         res.json({ clientSecret: paymentIntent.client_secret });
     } catch (err) {
-        res.status(500).send("interenal error");
+        // console.log(err)
+        res.status(400).send(err.message);
     }
 }

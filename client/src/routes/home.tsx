@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ArticleItemHome } from "../components/articleItemHome";
 import { fetchArticles } from "../utilities/apiCall";
-import { Donation } from "./donation";
+import { DonationComp } from "../components/donationComp";
 
 export const Home = () => {
     const [article, setArticle] = useState([]);
@@ -42,7 +42,7 @@ export const Home = () => {
                     )
                 )}
             </main>
-            <Donation />
+            <DonationComp />
         </div>
     );
 };

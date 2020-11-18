@@ -29,8 +29,8 @@ export const DonationForm = () => {
     const [succeeded, setSucceeded] = useState(false);
     const [processing, setProcessing] = useState(false);
 
-    const [email, setEmail] = useState();
-    const [amount, setAmount] = useState();
+    const [email, setEmail] = useState('');
+    const [amount, setAmount] = useState('');
 
     const [name, setName] = useState();
     const [openModal, setOpenModal] = useState(false);
@@ -42,44 +42,50 @@ export const DonationForm = () => {
     const elements = useElements();
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
         // if stripe is failing
         if (!stripe || !elements) {
             return;
         }
-        e.preventDefault();
 
-        // don't double click the Credit cCardF
-        setProcessing(true);
-        // get the paymentintent secret key
-        const { data } = await axios.post("/stripe/createPaymentIntent", {
-            name,
-            email,
-            amount,
-        });
+        try {
+            // don't double click the Credit cCardF
+            setProcessing(true);
+            // get the paymentintent secret key
+            const { data } = await axios.post("/stripe/createPaymentIntent", {
+                name,
+                email,
+                amount,
+            });
 
-        // confirm the card
-        const { paymentIntent, error } = await stripe.confirmCardPayment(
-            data.clientSecret,
-            {
-                payment_method: {
-                    card: elements.getElement(CardElement),
-                },
+            // confirm the card
+            const { paymentIntent, error } = await stripe.confirmCardPayment(
+                data.clientSecret,
+                {
+                    payment_method: {
+                        card: elements.getElement(CardElement),
+                    },
+                }
+            );
+
+            if (paymentIntent) {
+                setPayIntent(paymentIntent);
+                setSucceeded(true);
             }
-        );
 
-        if (paymentIntent) {
-            setPayIntent(paymentIntent);
-            setSucceeded(true);
-        }
-
-        if (error) {
-            setProcessing(false);
-            setOpenModal(true);
+            if (error) {
+                setProcessing(false);
+                setOpenModal(true);
+            }
+        } catch (err) {
+            console.log(err)
+            setProcessing(false)
+            setOpenModal(true)
         }
     };
-
     // redirect if succeeded
     if (succeeded) {
+        window.scrollTo(0,0)
         return (
             <Redirect
                 to={{
@@ -93,13 +99,11 @@ export const DonationForm = () => {
     return (
         <form className="container-donation-form">
             <TextField
-                value={name}
                 onChange={(e) => setName(e.target.value)}
                 label="Cardholder's Name"
             />
             <br />
             <TextField
-                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 label="Email Address"
             />
@@ -107,7 +111,6 @@ export const DonationForm = () => {
             <CardElement options={CARD_OPTIONS} />
             <hr style={{ backgroundColor: "gray" }} />
             <TextField
-                value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 label="Amount"
             />
@@ -129,7 +132,7 @@ export const DonationForm = () => {
                 aria-describedby="simple-modal-description"
             >
                 <div className="modal-donation-message">
-                    Wrong Card Number
+                    Check your inputs.
                     <Button
                         color="secondary"
                         onClick={() => setOpenModal(false)}
