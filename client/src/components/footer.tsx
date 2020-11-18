@@ -3,7 +3,6 @@ import React from "react";
 export const Footer = () => {
     return (
         <footer>
-            {" "}
             Connect with me! <br />
             <a
                 href="https://github.com/BestVersion7"

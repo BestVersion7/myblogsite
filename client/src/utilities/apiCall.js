@@ -28,7 +28,7 @@ export const signUpUser = async ({
     setRedirect,
 }) => {
     try {
-        const data = await axios.post("/api/account/signup", {
+      await axios.post("/api/account/signup", {
             first_name,
             last_name,
             account_email,

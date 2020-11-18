@@ -5,14 +5,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 export const SignUpForm = () => {
-    const [first_name, setFirst_name] = useState("te");
-    const [last_name, setLast_name] = useState("de");
-    const [account_email, setAccount_email] = useState("ss");
-    const [account_password, setAccount_password] = useState("aa");
+    const [first_name, setFirst_name] = useState();
+    const [last_name, setLast_name] = useState();
+    const [account_email, setAccount_email] = useState();
+    const [account_password, setAccount_password] = useState();
     const [redirect, setRedirect] = useState(false);
 
     const handleSubmit = (e: React.ChangeEvent<any>) => {
-        console.log("s");
         e.preventDefault();
         signUpUser({
             first_name,

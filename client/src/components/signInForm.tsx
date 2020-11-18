@@ -6,8 +6,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 export const SignInForm = () => {
-    const [account_email, setAccount_email] = useState("1");
-    const [account_password, setAccount_password] = useState("1");
+    const [account_email, setAccount_email] = useState();
+    const [account_password, setAccount_password] = useState();
     const [redirect, setRedirect] = useState(false);
     const { setSignedIn } = useContext(AuthContext);
 

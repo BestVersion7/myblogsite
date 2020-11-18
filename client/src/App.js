@@ -49,9 +49,7 @@ const App = () => {
                         <Route path="/signup">
                             <SignUp />
                         </Route>
-                        <Route path="/article/:articleId/:articleTitle">
-                            <Article />
-                        </Route>
+                        <Route path="/article/:articleId/:articleTitle" component={Article}/>
                         <Route
                             path="/donate/success/:id"
                             component={DonationSuccess}

@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const ArticleItemArticle: FC<Props> = ({
-    article_id,
     article_date,
     article_image,
     article_title,
@@ -23,7 +22,6 @@ export const ArticleItemArticle: FC<Props> = ({
         <article className="container-article-article">
             <h3>{article_title}</h3>
             <p className="container-article-article-author">
-                {" "}
                 Hunter Fan {convertDate(article_date)}
             </p>
             <figure>
